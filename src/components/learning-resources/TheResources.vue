@@ -53,7 +53,8 @@ export default {
   },
   provide() {
     return {
-      resources: this.storedResources
+      resources: this.storedResources,
+      addResource: this.addResource
     };
   },
   methods: {
@@ -67,8 +68,8 @@ export default {
         description: description,
         link: url
       }
-      this.storedResources.push(newResource);
-      this.selectedTab = "resources";
+      this.storedResources.unshift(newResource);
+      this.selectedTab = "StoredResources";
     }
   }
 }

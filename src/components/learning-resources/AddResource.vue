@@ -1,6 +1,6 @@
 <template>
   <tail-card>
-    <form>
+    <form @submit.prevent="submitData">
       <div>
         <label class="block text-sm font-medium text-gray-700" for="title">Title</label>
         <div class="mt-1">
@@ -35,7 +35,7 @@
         </div>
       </div>
       <div>
-        <tail-btn class="my-5">Submit</tail-btn>
+        <tail-btn class="my-5" type="submit">Submit</tail-btn>
       </div>
     </form>
   </tail-card>
@@ -44,11 +44,14 @@
 <script>
 export default {
   name: "AddResource",
+  inject: ['addResource'],
   methods: {
     submitData() {
       const enteredTitle = this.$refs.titleInput.value;
       const enteredDesc = this.$refs.descInput.value;
       const enteredLink = this.$refs.linkInput.value;
+
+      this.addResource(enteredTitle, enteredDesc, enteredLink);
     },
   }
 }
