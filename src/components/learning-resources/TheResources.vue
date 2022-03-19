@@ -59,6 +59,16 @@ export default {
   methods: {
     onTabChange(tab) {
       this.selectedTab = tab;
+    },
+    addResource(title, description, url) {
+      const newResource = {
+        id: new Date().toISOString(),
+        title: title,
+        description: description,
+        link: url
+      }
+      this.storedResources.push(newResource);
+      this.selectedTab = "resources";
     }
   }
 }
