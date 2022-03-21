@@ -1,4 +1,5 @@
 <template>
+  <tail-dialog v-if="inputIsInvalid" title="Invalid Input"></tail-dialog>
   <tail-card>
     <form @submit.prevent="submitData">
       <div>
@@ -6,7 +7,7 @@
         <div class="mt-1">
           <input id="title"
                  ref="titleInput"
-                 class="form-input shadow-sm focus:ring-indigo-500 w-full focus:border-indigo-500 block  sm:text-sm border-gray-300 rounded-md"
+                 class="form-input shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
                  name="title"
                  placeholder="Enter your title"
                  type="text"/>
@@ -17,7 +18,7 @@
         <div class="mt-1">
           <textarea id="description"
                     ref="descInput"
-                    class="form-input shadow-sm focus:ring-indigo-500 w-full focus:border-indigo-500 block w-1/4 sm:text-sm border-gray-300 rounded-md"
+                    class="form-input shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
                     name="description"
                     placeholder="Enter your description"
                     type="text"/>
@@ -28,7 +29,7 @@
         <div class="mt-1">
           <input id="link"
                  ref="linkInput"
-                 class="form-input shadow-sm focus:ring-indigo-500 w-full focus:border-indigo-500 block w-1/4 sm:text-sm border-gray-300 rounded-md"
+                 class="form-input shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
                  name="link"
                  placeholder="Enter your link"
                  type="text"/>
@@ -42,9 +43,15 @@
 </template>
 
 <script>
+
 export default {
   name: "AddResource",
   inject: ['addResource'],
+  data() {
+    return {
+      inputIsInvalid: false,
+    }
+  },
   methods: {
     submitData() {
       const enteredTitle = this.$refs.titleInput.value;
@@ -52,6 +59,7 @@ export default {
       const enteredLink = this.$refs.linkInput.value;
 
       if (enteredTitle.trim() === '' || enteredDesc.trim() === '' || enteredLink.trim() === '') {
+        this.inputIsInvalid = true;
         return;
       }
 
