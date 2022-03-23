@@ -1,6 +1,7 @@
 <template>
   <ul class="space-y-3" role="list">
-    <LearningResource v-for="res in resources" :key="res.id" :description="res.description" :link="res.link"
+    <LearningResource v-for="res in resources" :id="res.id" :key="res.id" :description="res.description"
+                      :link="res.link"
                       :title="res.title"
                       class="bg-white shadow overflow-hidden rounded-md px-6 py-4"/>
   </ul>

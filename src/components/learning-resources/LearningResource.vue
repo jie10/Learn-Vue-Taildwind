@@ -3,7 +3,7 @@
     <div class="grid grid-cols-2 gap-4 auto-cols-max place-content-between">
       <div class="col-span-1 font-bold"><h3>{{ title }}</h3></div>
       <div class="col-end-13">
-        <tail-btn>Delete</tail-btn>
+        <tail-btn @click="deleteResource(id)">Delete</tail-btn>
       </div>
     </div>
     <p>{{ description }}</p>
@@ -16,7 +16,8 @@
 <script>
 export default {
   name: "LearningResource",
-  props: ['title', 'description', 'link'],
+  props: ['id', 'title', 'description', 'link'],
+  inject: ['deleteResource']
 }
 </script>
 
