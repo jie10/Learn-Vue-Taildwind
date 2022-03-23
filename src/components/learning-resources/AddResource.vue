@@ -1,6 +1,9 @@
 <template>
   <tail-dialog v-if="inputIsInvalid" title="Invalid Input">
-
+    <template #actions>
+      <p>Unfortunately, at least one input value is invalid</p>
+      <p>Please check all inputs make sure you enter at least a few characters into each into each input field</p>
+    </template>
   </tail-dialog>
   <tail-card>
     <form @submit.prevent="submitData">
