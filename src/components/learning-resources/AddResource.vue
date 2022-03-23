@@ -1,5 +1,7 @@
 <template>
-  <tail-dialog v-if="inputIsInvalid" title="Invalid Input"></tail-dialog>
+  <tail-dialog v-if="inputIsInvalid" title="Invalid Input">
+
+  </tail-dialog>
   <tail-card>
     <form @submit.prevent="submitData">
       <div>
